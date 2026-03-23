@@ -1,0 +1,8 @@
+baseURL = 'https://hugo.kk-wuyue.top/'
+locale = 'en-us'
+title = 'My New Hugo Project'
+theme = "PaperMod"
+
+[params]
+  ShowReadingTime = true
+  ShowPostNavLinks = true
