@@ -2,8 +2,8 @@ backend:
   name: github
   repo: YsKiKi/Hugo
   branch: main
-  base_url: https://hugo.kk-wuyue.top
-  auth_endpoint: /auth
+  base_url: https://auth.kk-wuyue.top
+  auth_endpoint: /api/auth
 
 media_folder: "static/images"
 public_folder: "/images"
