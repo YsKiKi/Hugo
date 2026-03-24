@@ -2,11 +2,11 @@ backend:
   name: github
   repo: YsKiKi/Hugo
   branch: main
-  base_url: https://auth.kk-wuyue.top
+  base_url: https://hugo.kk-wuyue.top
   auth_endpoint: /api/auth
 
-media_folder: "static/images"
-public_folder: "/images"
+media_folder: static/images
+public_folder: /images
 
 collections:
   - name: "posts"
