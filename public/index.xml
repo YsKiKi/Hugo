@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>初夏札记</title>
-    <link>http://localhost:9240/</link>
+    <link>http://localhost:10120/</link>
     <description>Recent content on 初夏札记</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 23 Mar 2026 23:05:15 +0800</lastBuildDate>
-    <atom:link href="http://localhost:9240/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:10120/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello</title>
-      <link>http://localhost:9240/posts/hello/</link>
+      <link>http://localhost:10120/posts/hello/</link>
       <pubDate>Mon, 23 Mar 2026 23:05:15 +0800</pubDate>
-      <guid>http://localhost:9240/posts/hello/</guid>
+      <guid>http://localhost:10120/posts/hello/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;This is the first blog for test.&lt;br&gt;
 By &lt;a href=&#34;mailto:wuyue_kiki@163.com&#34;&gt;YsKiKi&lt;/a&gt;.&lt;/p&gt;
