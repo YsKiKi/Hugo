@@ -1,3 +1,2 @@
 /admin/*
-  Cache-Control: no-transform
-  X-Frame-Options: SAMEORIGIN
+  Cache-Control: no-store
