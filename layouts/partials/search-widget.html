@@ -1,0 +1,38 @@
+{{/* Search Widget - inject into header */}}
+<div id="search-widget" class="search-widget" role="search">
+  <button class="search-toggle" id="search-toggle" aria-label="打开搜索" aria-expanded="false">
+    <span class="search-label">搜索</span>
+    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="11" cy="11" r="8"/>
+      <path d="m21 21-4.35-4.35"/>
+    </svg>
+  </button>
+
+  <div class="search-box" id="search-box" aria-hidden="true">
+    <input
+      type="search"
+      id="search-input"
+      class="search-input"
+      placeholder="搜索文章..."
+      autocomplete="off"
+      aria-label="搜索"
+      aria-controls="search-results"
+      aria-autocomplete="list"
+    />
+    <button class="search-clear" id="search-clear" aria-label="操作" hidden>
+      {{/* × 图标：有文字时显示，点击清空 */}}
+      <svg class="icon-clear" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+      {{/* 搜索图标：无文字时显示，点击关闭搜索框 */}}
+      <svg class="icon-search-close" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.35-4.35"/>
+      </svg>
+    </button>
+  </div>
+
+  <ul id="search-results" class="search-results" role="listbox" aria-label="搜索结果" hidden></ul>
+</div>
+
+<div id="search-overlay" class="search-overlay" hidden></div>

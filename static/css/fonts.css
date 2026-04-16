@@ -1,0 +1,16 @@
+/* static/css/fonts.css — 全局字体设置 */
+
+/* ─── 全局正文：霞鹜文楷 ─────────────────────────────────────── */
+body {
+  font-family: "LXGW WenKai", sans-serif;
+}
+
+/* ─── 代码块 / 行内代码：霞鹜文楷 Mono ──────────────────────── */
+code,
+pre,
+kbd,
+samp,
+.highlight,
+.chroma {
+  font-family: "LXGW WenKai Mono", monospace;
+}

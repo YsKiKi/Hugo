@@ -1,0 +1,146 @@
+/* static/css/share.css — 中国平台分享按钮样式 */
+
+/* ─── 按钮组容器 ─────────────────────────────────────────────── */
+.cn-share-buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0 8px;
+}
+
+.share-label {
+  font-size: 0.88rem;
+  color: var(--secondary);
+  white-space: nowrap;
+}
+
+/* ─── 单个按钮（纯图标） ─────────────────────────────────────── */
+.cn-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1.5px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--primary);
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: background 0.16s, border-color 0.16s, transform 0.15s;
+  flex-shrink: 0;
+}
+
+.cn-share-btn:hover {
+  background: var(--code-bg);
+  border-color: var(--primary);
+  transform: scale(1.1);
+}
+
+.cn-share-btn img {
+  display: block;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  opacity: 0.82;
+  transition: opacity 0.15s;
+  pointer-events: none;
+}
+
+.cn-share-btn:hover img {
+  opacity: 1;
+}
+
+/* ─── 微信弹窗遮罩 ───────────────────────────────────────────── */
+.cn-wechat-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: cn-fade-in 0.18s ease both;
+}
+
+.cn-wechat-modal[hidden] {
+  display: none;
+}
+
+@keyframes cn-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─── 弹窗内容卡片 ───────────────────────────────────────────── */
+.cn-wechat-modal-inner {
+  position: relative;
+  background: var(--entry);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 32px 22px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  animation: cn-scale-in 0.2s cubic-bezier(0.16,1,0.3,1) both;
+  max-width: 90vw;
+}
+
+@keyframes cn-scale-in {
+  from { transform: scale(0.92); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+.cn-wechat-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--secondary);
+  padding: 4px 6px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: background 0.15s;
+}
+
+.cn-wechat-close:hover {
+  background: var(--code-bg);
+}
+
+.cn-wechat-tip {
+  font-size: 0.9rem;
+  color: var(--secondary);
+  margin: 0 0 14px;
+}
+
+.cn-qrcode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+}
+
+.cn-qrcode img {
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+.cn-wechat-url {
+  margin: 12px 0 0;
+  font-size: 0.72rem;
+  color: var(--secondary);
+  word-break: break-all;
+  max-width: 220px;
+  opacity: 0.7;
+}
+
+/* ─── 暗色模式 ───────────────────────────────────────────────── */
+.dark .cn-wechat-modal {
+  background: rgba(0, 0, 0, 0.6);
+}

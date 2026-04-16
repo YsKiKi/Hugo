@@ -1,0 +1,17 @@
+{{- /* layouts/index.json - generates /index.json as the search corpus */ -}}
+{{- $pages := where .Site.RegularPages "Type" "not in" (slice "page") -}}
+{{- $pages = union $pages (where .Site.RegularPages "Params.searchHidden" "!=" true) -}}
+{{- $result := slice -}}
+{{- range $pages -}}
+  {{- if not .Params.searchHidden -}}
+    {{- $result = $result | append (dict
+      "permalink" .Permalink
+      "title"     .Title
+      "summary"   (or .Description (truncate 200 (.Summary | plainify)))
+      "tags"      (or .Params.tags slice)
+      "section"   .Section
+      "date"      (.Date.Format "2006-01-02")
+    ) -}}
+  {{- end -}}
+{{- end -}}
+{{- $result | jsonify -}}

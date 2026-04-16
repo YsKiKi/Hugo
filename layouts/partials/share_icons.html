@@ -1,0 +1,109 @@
+﻿{{- $pageurl := .Permalink | absURL -}}
+{{- $title := .Title | plainify -}}
+
+<div class="cn-share-buttons">
+  <span class="share-label">分享：</span>
+
+  {{/* ── 复制链接 ── */}}
+  <button class="cn-share-btn" id="cn-copy-link"
+          aria-label="复制链接"
+          title="复制链接"
+          data-url="{{ $pageurl }}">
+    <img src="{{ "share_link_icon.svg" | relURL }}" alt="复制链接" aria-hidden="true">
+  </button>
+
+  {{/* ── QQ ── */}}
+  <a class="cn-share-btn" target="_blank" rel="noopener noreferrer"
+     aria-label="分享到 QQ"
+     title="分享到 QQ"
+     href="https://connect.qq.com/widget/shareqq/index.html?url={{ $pageurl | urlize }}&title={{ $title | urlize }}&summary={{ $title | urlize }}&site={{ $pageurl | urlize }}">
+    <img src="{{ "share_qq_icon.svg" | relURL }}" alt="QQ" aria-hidden="true">
+  </a>
+
+  {{/* ── 微博 ── */}}
+  <a class="cn-share-btn" target="_blank" rel="noopener noreferrer"
+     aria-label="分享到微博"
+     title="分享到微博"
+     href="https://service.weibo.com/share/share.php?url={{ $pageurl | urlize }}&title={{ $title | urlize }}">
+    <img src="{{ "share_weibo_icon.svg" | relURL }}" alt="微博" aria-hidden="true">
+  </a>
+
+  {{/* ── 微信（二维码弹窗） ── */}}
+  <button class="cn-share-btn" id="cn-wechat-btn"
+          aria-label="分享到微信"
+          title="分享到微信，扫描二维码"
+          data-url="{{ $pageurl }}">
+    <img src="{{ "share_wechat_icon.svg" | relURL }}" alt="微信" aria-hidden="true">
+  </button>
+</div>
+
+{{/* ── 微信二维码弹窗 ── */}}
+<div id="cn-wechat-modal" class="cn-wechat-modal" hidden aria-modal="true" role="dialog" aria-label="微信分享二维码">
+  <div class="cn-wechat-modal-inner">
+    <button class="cn-wechat-close" id="cn-wechat-close" aria-label="关闭">✕</button>
+    <p class="cn-wechat-tip">微信扫一扫分享</p>
+    <div id="cn-qrcode" class="cn-qrcode"></div>
+    <p class="cn-wechat-url" id="cn-wechat-url"></p>
+  </div>
+</div>
+
+<script>
+(function () {
+  // ── 复制链接 ──
+  var copyBtn = document.getElementById('cn-copy-link');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var url = copyBtn.getAttribute('data-url');
+      navigator.clipboard.writeText(url).then(function () {
+        var name = copyBtn.querySelector('.cn-share-name');
+        if (name) {
+          var orig = name.textContent;
+          name.textContent = '已复制！';
+          setTimeout(function () { name.textContent = orig; }, 1800);
+        }
+      }).catch(function () {
+        prompt('复制下方链接：', url);
+      });
+    });
+  }
+
+  // ── 微信二维码 ──
+  var wcBtn   = document.getElementById('cn-wechat-btn');
+  var wcModal = document.getElementById('cn-wechat-modal');
+  var wcClose = document.getElementById('cn-wechat-close');
+  var wcUrlEl = document.getElementById('cn-wechat-url');
+  var qrEl    = document.getElementById('cn-qrcode');
+
+  if (!wcBtn || !wcModal) return;
+
+  wcBtn.addEventListener('click', function () {
+    var url = wcBtn.getAttribute('data-url');
+    wcUrlEl.textContent = url;
+    qrEl.innerHTML = '';
+
+    var img = document.createElement('img');
+    img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encodeURIComponent(url);
+    img.alt = '页面二维码';
+    img.width = 180;
+    img.height = 180;
+    qrEl.appendChild(img);
+
+    wcModal.removeAttribute('hidden');
+    wcClose.focus();
+  });
+
+  wcClose.addEventListener('click', function () {
+    wcModal.setAttribute('hidden', '');
+  });
+
+  wcModal.addEventListener('click', function (e) {
+    if (e.target === wcModal) wcModal.setAttribute('hidden', '');
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !wcModal.hasAttribute('hidden')) {
+      wcModal.setAttribute('hidden', '');
+    }
+  });
+})();
+</script>

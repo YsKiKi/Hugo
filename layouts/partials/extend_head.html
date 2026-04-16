@@ -1,0 +1,35 @@
+{{/* layouts/partials/extend_head.html */}}
+{{/* Inject search styles and scripts into <head> */}}
+
+{{/* Favicon - light/dark adaptive via SVG internal CSS */}}
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+
+{{/* 霞鹜文楷 & 霞鹜文楷 Mono 字体 (jsDelivr CDN) */}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-mono-webfont@1.1.0/style.css">
+
+<link rel="stylesheet" href="{{ "css/search.css" | relURL }}">
+<link rel="stylesheet" href="{{ "css/share.css" | relURL }}">
+<link rel="stylesheet" href="{{ "css/fonts.css" | relURL }}">
+
+{{/* Fuse.js - lightweight fuzzy search library */}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.0.0/fuse.min.js" defer></script>
+<script src="{{ "js/search.js" | relURL }}" defer></script>
+
+{{/* 监听 OS/浏览器深色模式变化，动态同步页面主题（仅在用户未手动设置偏好时生效）*/}}
+<script>
+    (function () {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        function applySystemTheme(e) {
+            if (!localStorage.getItem("pref-theme")) {
+                document.documentElement.dataset.theme = e.matches ? 'dark' : 'light';
+            }
+        }
+        if (mq.addEventListener) {
+            mq.addEventListener('change', applySystemTheme);
+        } else if (mq.addListener) {
+            // Safari < 14 兼容
+            mq.addListener(applySystemTheme);
+        }
+    })();
+</script>
