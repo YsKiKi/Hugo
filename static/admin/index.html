@@ -5,9 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
     <title>Content Manager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css" />
+    <style>
+      *, *::before, *::after {
+        font-family: 'LXGW WenKai', sans-serif !important;
+      }
+
+      code, pre, kbd, samp, textarea[class*="code"], [class*="CodeMirror"] {
+        font-family: 'LXGW WenKai Mono', monospace !important;
+      }
+    </style>
   </head>
   <body>
     <!-- Include the script that builds the page and powers Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script src="zh_Hans.js"></script>
+    <script>
+      CMS.registerLocale('zh_Hans', window.DecapCmsLocaleZh_Hans);
+    </script>
   </body>
 </html>
