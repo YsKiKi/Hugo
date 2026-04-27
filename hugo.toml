@@ -7,7 +7,15 @@ theme = "PaperMod"
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
   defaultTheme = "auto"
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+    codeFences = true
+    guessSyntax = true
+    tabWidth = 4
   
 [outputs]
   home = ["HTML","RSS","JSON"]
